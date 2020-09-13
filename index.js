@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 
 app.get('/cnn', (req, res) => {
     request(
-        { url: (`http://localhost:2222/cnn`) },
+        { url: (`https://purple-news-scraper.herokuapp.com/cnn`) },
         (error, response, body) => {
             if(error || response.statusCode !== 200) {
                 return res.status(500).json({ type: 'error', message: err.message })
@@ -27,7 +27,7 @@ app.get('/cnn', (req, res) => {
 
 app.get('/fox', (req, res) => {
     request(
-        { url: (`http://localhost:2222/fox`) },
+        { url: (`https://purple-news-scraper.herokuapp.com/fox`) },
         (error, response, body) => {
             if(error || response.statusCode !== 200) {
                 return res.status(500).json({ type: 'error', message: error.message })
