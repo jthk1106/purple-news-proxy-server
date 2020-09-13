@@ -1,20 +1,21 @@
+require('dotenv').config();
 const express = require('express')
 const request = require('request')
-const cors = require('cors')
+// const cors = require('cors')
 
 const app = express()
 
-// app.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', 'https://purple-news.netlify.app/')
-//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
-//     next()
-// })
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://purple-news.netlify.app/')
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
+    next()
+})
 
 app.get('/', (req, res) => {
     res.send('Proxy says hello Oojoo!')
 })
 
-app.get('/cnn', cors(), (req, res) => {
+app.get('/cnn', (req, res) => {
     request(
         { url: (`https://purple-news-scraper.herokuapp.com/cnn`) },
         (error, response, body) => {
@@ -27,7 +28,7 @@ app.get('/cnn', cors(), (req, res) => {
     )
 })
 
-app.get('/fox', cors(), (req, res) => {
+app.get('/fox', (req, res) => {
     request(
         { url: (`https://purple-news-scraper.herokuapp.com/fox`) },
         (error, response, body) => {
