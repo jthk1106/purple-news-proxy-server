@@ -9,13 +9,12 @@ const app = express()
 //     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
 //     next()
 // })
-app.use(cors())
 
 app.get('/', (req, res) => {
     res.send('Proxy says hello Oojoo!')
 })
 
-app.get('/cnn', (req, res) => {
+app.get('/cnn', cors(), (req, res) => {
     request(
         { url: (`https://purple-news-scraper.herokuapp.com/cnn`) },
         (error, response, body) => {
@@ -28,7 +27,7 @@ app.get('/cnn', (req, res) => {
     )
 })
 
-app.get('/fox', (req, res) => {
+app.get('/fox', cors(), (req, res) => {
     request(
         { url: (`https://purple-news-scraper.herokuapp.com/fox`) },
         (error, response, body) => {
