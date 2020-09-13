@@ -4,7 +4,7 @@ const request = require('request')
 const app = express()
 
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Origin', 'https://purple-news.netlify.app/')
     next()
 })
 
